@@ -1,0 +1,6 @@
+*.iml
+build/
+output/
+release/
+class_files.txt
+.externalNativeBuild/

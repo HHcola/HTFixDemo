@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.htfix"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "3.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'htfixkey'
+            keyPassword '123456'
+            storeFile file('release-key.keystore')
+            storePassword '123456'
+            v2SigningEnabled true //开启V2签名，渠道包使用新的打包方式
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'lib')
+    implementation project(":htfixlib")
+}
